@@ -1,0 +1,8 @@
+<view wx:for="{{allEvents}}">
+  <view wx:if="{{item.statu}}">
+    <view bindlongpress="deleteEvent" bindtap="changeStatu" id="{{item.name + '-' + item._id + '-' + item.statu + '-' + item.date + '-' + item.isSub + '-' + item.subId}}" class="{{'detailEvents finish-' + item.statu}}" style="{{finishedTrueStyle}}">{{item.name}} 开始：{{item.startTimeH}}:{{item.startTimeM}}{{item.isSub?('| 已订阅：' +item.subTimeH +':' +item.subTimeM):' | 无提醒'}}  </view>
+  </view>
+  <view wx:if="{{!item.statu}}">
+    <view bindlongpress="deleteEvent" bindtap="changeStatu" id="{{item.name + '-' + item._id + '-' + item.statu + '-' + item.date + '-' + item.isSub + '-' + item.subId}}" class="{{'detailEvents finish-' + item.statu}}" style="{{finishedFalseStyle}}">{{item.name}} 开始：{{item.startTimeH}}:{{item.startTimeM}} {{item.isSub?('| 已订阅：' +item.subTimeH +':'+item.subTimeM):' | 无提醒'}}</view>
+  </view>
+</view>

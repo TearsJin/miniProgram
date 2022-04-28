@@ -1,0 +1,4 @@
+<view style="{{headBarStyle}}">
+  <button class="menuBtn" bindtap="callBarFunction" id="displayRightBar-" style="{{menuBtnStyleBaseFloat + menuBtnStyle }}"></button>
+  <button bindtap="callBarFunction" id="toApplication-test" style="{{backBtnStyle + backBtnStyleFloat}} "></button>
+</view>

@@ -1,0 +1,61 @@
+<view style="{{CountdownDisplay}}">
+  <button bindtap="displayCountDownAddForm">添加</button>
+<view style="height:auto;display: flex;justify-content: center; ">
+  <view style="width: 80%;">
+    <view wx:for="{{countDownList}}" style="width:48%;float: left;padding:0.5%;border-radius: 25px;">
+      <view bindlongtap="deleteCountDown" bindtap="editCountDown" style="width:100%;padding-bottom:100%;height:0;background: url('{{item.Pic}}') no-repeat center ;background-size: cover;border-radius: 10px;" id="{{item.name}}#{{item.date}}#{{item.Pic}}#{{index}}">
+        <view wx:if="{{item.name != '' && item.date != ''}}" style="width: 100%;height: auto;display: flex;flex-direction: column;align-items: center;background: rgba(255,255,255,0.4);">
+          <text style="padding-top: 20%;">距离</text>
+          <text style="color: red;font-weight: bold;">{{item.name}}</text>
+          <text>还有</text>
+          <text style="padding-bottom: 20%;">{{item.days}} days</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view>
+  <form class="addDetail" style="display: {{uploadCountDownStyle}};" bindsubmit="uploadCountDownSubmit">
+    <view>
+      <text class="eventText">name: </text>
+      <input type="text" class="eventInput" name="name" value="{{countDownName}}" />
+    </view>
+    <view>
+      <text class="eventText">date:（xxxx-xx-xx） </text>
+      <input type="text" class="eventInput" name="date" value="{{countDownDate}}" />
+    </view>
+    <view>
+      <text class="eventText">background: </text>
+      <input value="{{countDownPic}}" style="display: none;"/>
+      <button bindtap="uploadCountDownPic">点击上传</button>
+      <view style="width: 40px;height: 40px;background: url('{{countDownPic}}') no-repeat center;background-size: 100%"></view>
+      <view>{{finishedUpload}} % </view>
+    </view>
+    <button form-type="submit">确定</button>
+    <button bindtap="editCountDownDeny">取消</button>
+  </form>
+</view>
+</view>
+
+
+<!-- <view>----------------------------------------</view>
+<text style="width: 100%;word-break: break-all;">{{test}}</text> -->
+<!-- 
+
+  就是一个一行两格的展示，展示内容是一个对象。
+
+  对象有两种type: image和event (划掉)
+  (更新)统一成一个格式，如果name为空或者date为空，则默认为image
+  并且event可以添加背景图
+  数据库记录结构
+  {
+    name : String,
+    date : String,
+    pic : String
+  }
+  每格都需要一个编辑，image则编辑图像（可选），content则编辑事件和结束时间
+  添加按钮
+
+  需要一个云函数接口 数据库
+ -->

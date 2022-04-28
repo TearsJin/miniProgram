@@ -1,0 +1,43 @@
+.toDo-Content{
+  border: 1px solid black;
+  min-height: 250px;
+  color: gray;
+  width: 90%;
+  margin-left: 5%;
+  margin-bottom: 20px;
+}
+
+
+.toDo-Title{
+  width: 75%;
+  text-align: right;
+  padding-right: 5%;
+  display: block;
+  padding-top: 5px;
+  margin-left: 10%;
+  margin-bottom: 10px;
+  border-bottom: 1px black solid;
+}
+
+.toDo-List{
+  width: 90%;
+  margin-left: 1%;
+  border-bottom: 1px solid gray;
+  height: 40px;
+  margin-bottom: 5px;
+  padding-left: 4%;
+  padding-right: 4%;
+  padding-bottom: 5px;
+}
+
+.toDo-Detail{
+  display: flex;
+  color: black;
+}
+.toDo-Info{
+  margin-left: 5px;
+}
+
+.toDo-true{
+  display: none;
+}

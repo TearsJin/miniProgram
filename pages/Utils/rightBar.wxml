@@ -1,0 +1,7 @@
+<view class="rightBar" style="{{rightBarStyle + rightBarStyleBaseSide}}">
+  <view bindtap="callBarFunction" id="toApplication-study" style="{{barMargin}}">我的课表</view>
+  <view bindtap="callBarFunction" id="toApplication-setting" style="{{barMargin}}">设置</view>
+  <view bindtap="callBarFunction" id="toApplication-Events" style="{{barMargin}}">我的事项</view>
+  <view bindtap="callBarFunction" id="toApplication-Help" style="{{barMargin}}">帮助</view>
+  <view bindtap="callBarFunction" id="toApplication-debug" style="{{barMargin}}">测试页</view>
+</view>

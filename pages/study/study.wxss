@@ -1,0 +1,66 @@
+/* pages/study/study.wxss */
+
+
+
+.clanderBar{
+  margin-top: 2.6rem;
+  display: block;
+  height: 20.1rem;
+}
+.tr{
+  background-color: rgba(100, 148, 237, 0.342);
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  /* min-height: 2.6rem; */
+  height: max-content;
+  align-items: center;
+}
+
+.th{
+  min-height: 2.6rem;
+  width: 40%;
+  justify-content: center;
+  background: #3366FF;
+  color: #fff;
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+.td{
+  height: 4rem;
+  width: 40%;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  border: 1px solid gray ;
+}
+.text{
+  font-size: 12px;
+}
+
+
+/* 
+  添加课程
+*/
+.addDetail{
+  width: 100%;
+  display: none;
+  background-color: white;
+  border: 1px solid black;
+  z-index: 9;
+  position: fixed;
+  top: 120px;
+  padding-top: 20px;
+}
+
+.eventInput{
+  border: 1px solid black;
+  height: 100%;
+  width: 50%;
+}
+
+.eventText{
+  float: left;
+}

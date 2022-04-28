@@ -1,0 +1,44 @@
+
+
+<view style="{{WaterDisplay}}">
+<button bindtap='waterFresh'>刷新</button>
+  <view class="water-Content">
+    <view class="water-Body">
+      <view class="water-List">
+        <view class="water-Balance water-List-Detail">
+          <text style="margin-top: 18%;">{{waterTitleText}}</text>
+          <text>余额</text>
+          <text>{{waterBalance}}元</text>
+        </view>
+      </view>
+      <view class="water-List">
+        <view class="water-Cold water-List-Detail">
+          <text>冷水</text>
+          <text>已使用：{{waterColdUsage}}吨</text>
+          <text>补贴：{{waterColdAllowance}}吨</text>
+          <text>单价：{{waterColdPrice}}元</text>
+          <text>本月：{{waterCold}}元</text>
+        </view>
+      </view>
+      <view class="water-List">
+        <view class="water-Hot water-List-Detail">
+          <text>热水</text>
+          <text>已使用：{{waterHotUsage}}吨</text>
+          <text>补贴：{{waterHotAllowance}}吨</text>
+          <text>单价：{{waterHotPrice}}元</text>
+          <text>本月：{{waterHot}}元</text>
+        </view>
+      </view>
+      <view class="water-List">
+        <view class="water-Electricity water-List-Detail">
+          <text>电能</text>
+          <text>已使用：{{waterElectricityUsage}}度</text>
+          <text>补贴：{{waterElectricityAllowance}}度</text>
+          <text>单价：{{waterElectricityPrice}}元</text>
+          <text>本月：{{waterElectricity}}元</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <text style="color: red;">本API由小透明・宸 https://akarin.dev/ 提供！</text>
+</view>

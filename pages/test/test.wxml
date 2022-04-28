@@ -1,0 +1,103 @@
+<!--pages/test/test.wxml-->
+
+<!-- 头部导航栏 -->
+<include src="../Utils/head.wxml" />
+
+<!-- 侧栏 -->
+<include src="../Utils/rightBar.wxml" />
+<!-- 日历组件 -->
+<view class="clanderTable">
+  <view class="clanderDetail" style="display:{{detailDisplay}}">
+    <button class="closeDetail" bindtap="closeDetail">X</button>
+    <button class="closeDetail" bindtap="addEvent" id="{{detailDay}}">+</button>
+    <!-- 事件添加表单 -->
+    <form class="addDetail" style="display: {{addDetailDisplay}};" bindsubmit="addSubmit">
+      <input type="text" style="display: none;" name="date" value="{{addEventDate}}" />
+      <view>
+        <text class="eventText">name: </text>
+        <input type="text" class="eventInput" name="name" value="{{addEventName}}" />
+      </view>
+      <view>
+        <text class="eventText">startTime: </text>
+        <input type="number" class="eventInput" name="startTimeH" value="{{addEventStartTimeH}}" style="width: 20px;float: left;" /> <text style="float:left">:</text>
+        <input type="number" class="eventInput" name="startTimeM" value="{{addEventStartTimeM}}" style="width: 20px;float: left" />
+      </view>
+      <view>
+        <text class="eventText" style="padding-left: 100%;"></text>
+        <radio-group bindchange="radioChange">
+          未完成：<radio checked="true" value="unfinished"></radio>
+          已完成：<radio value="finished"></radio>
+        </radio-group>
+      </view>
+      <checkbox-group bindchange="changeSub">
+        是否需要订阅提醒(当日提醒)？
+        <checkbox value="True"></checkbox>
+        <view style="display:{{subFormDisplay?'initial':'none'}};">
+        订阅时间
+          <input type="number" class="eventInput" name="subTimeH" value="{{addEventSubTimeH}}" />
+        :
+        <input type="number" class="eventInput" name="subTimeM" value="{{addEventSubTimeM}}"  />
+        </view>
+
+      </checkbox-group>
+      <button form-type="submit">确定</button>
+      <button bindtap="addDeny">取消</button>
+    </form>
+    <!-- 当日事件 -->
+    <include src="../Utils/events" />
+  </view>
+
+  <!-- 日历 -->
+  <include src="../Utils/clander" />
+</view>
+
+<!-- moduleSelect -->
+<view class="moduleSelect-Content">
+  <view class="moduleSelect-Body">
+    <view wx:for='{{[1,2,3]}}' class="moduleSelect-List {{'moduleSelect-'+(moduleSelected[index] == isSelected ? 'Selected':'') + (index == 0 ? '-First':'') + (index != 0 && index!= 2 ? '-Mid':'') + (index == 2?'-Last':'')}}" id="{{moduleSelected[index]}}" bindtap="moduleSelectShift">
+      <view wx:if="{{index == 0}}" class="moduleSelect-First moduleSelect-Icon">
+        <image class="moduleSelect-IconPng" src="{{moduleSelectEventIcon}}" mode="aspectFill"></image>
+      </view>
+      <view wx:if="{{index == 2}}" class="moduleSelect-Last moduleSelect-Icon">
+        <image class="moduleSelect-IconPng" src="{{moduleSelectWaterIcon}}"></image>
+      </view>
+      <view wx:if="{{index != 0 && index != 2}}" class="moduleSelect-Middle moduleSelect-Icon">
+        <image class="moduleSelect-IconPng" src="{{moduleSelectCountdownIcon}}"></image>
+      </view>
+    </view>
+  </view>
+
+</view>
+
+<!-- 今日待办组件 -->
+<view style="{{EventDisplay}}">
+  <view class="toDo-Content">
+    <text class="toDo-Title">{{unFinishedNum}}任务</text>
+    <view wx:for="{{toDoEvents}}" wx:key="index" class="toDo-List toDo-{{item.statu}}">
+      <view wx:if="{{!item.statu}}" class="toDo-Detail">
+        <image style="width:40px;height:40px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAA2UlEQVRoQ+2VwQnDIBhGI+Ie7U3w0hEySkfqBl2lI3gRPGaEDuAh6aHQQCmE12CUz/v3+fueqBkaX6bx+QcdoLZBGZABSEBXCALEcRnACGGBDECAOC4DGCEskAEIEMdlACOEBX0ZCCFcFiAjhLJrPKV0+9xgZWA5wNUYc991AlheSjnnnKd3jQ4AgW6Oy8BmZH8O9G3Ae39yzr2e0sMua+0jxvj8+godduofg/X1E8tABQK6QhWgr7aUARmABHSFIEAclwGMEBbIAASI4zKAEcICGYAAcbx5AzPKyDkx/muWsQAAAABJRU5ErkJggg=="></image>
+        <view class="toDo-Info">
+          <view> {{item.name}}</view>
+          <view>{{item.startTimeH}}:{{item.startTimeM}}</view>
+        </view>
+      </view>
+    </view>
+    <text class="toDo-Title">{{toDoClasses.length}}门课</text>
+    <view wx:for="{{toDoClasses}}" wx:key="index" class="toDo-List toDo-{{item.statu}}">
+      <view wx:if="{{!item.statu}}" class="toDo-Detail">
+        <image style="width:40px;height:40px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAA2UlEQVRoQ+2VwQnDIBhGI+Ie7U3w0hEySkfqBl2lI3gRPGaEDuAh6aHQQCmE12CUz/v3+fueqBkaX6bx+QcdoLZBGZABSEBXCALEcRnACGGBDECAOC4DGCEskAEIEMdlACOEBX0ZCCFcFiAjhLJrPKV0+9xgZWA5wNUYc991AlheSjnnnKd3jQ4AgW6Oy8BmZH8O9G3Ae39yzr2e0sMua+0jxvj8+godduofg/X1E8tABQK6QhWgr7aUARmABHSFIEAclwGMEBbIAASI4zKAEcICGYAAcbx5AzPKyDkx/muWsQAAAABJRU5ErkJggg=="></image>
+        <view class="toDo-Info">
+          <view> {{item.name}} - {{item.classroom}}</view>
+          <view>{{item.startTimeH}}:{{item.startTimeM}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- <view>----------------------------------------------</view> -->
+<!-- 水电费组件 -->
+<include src="../Utils/water" />
+<!-- <view>----------------------------------------------</view> -->
+<!-- 倒计时组件 -->
+<include src="../Utils/countDown" />

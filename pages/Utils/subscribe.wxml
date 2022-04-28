@@ -1,0 +1,4 @@
+<view>
+  <button bindtap = "subscribe">订阅</button>
+  <button bindtap = "send">发送</button>
+</view>

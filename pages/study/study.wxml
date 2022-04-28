@@ -1,0 +1,69 @@
+<!--pages/study/study.wxml-->
+
+<!-- 头部导航栏 -->
+<include src="../Utils/head.wxml"/>
+
+<!-- 侧栏 -->
+<include src="../Utils/rightBar.wxml"/>
+
+<view class="clanderBar">
+  <view class="tr bg-w">
+    <view class="th">^.^</view>
+    <view class="th" wx:for="{{weekdayChinese}}">{{item}}</view>
+
+
+  </view>
+  <view class="tr bg-w" wx:for="{{timeEip}}" wx:for-item="Time" wx:for-index="indexRow">
+    <view class="td bg-g" id="T-{{indexRow}}-{{Time[0]}}-{{Time[1]}}" bindtap="modifyTable">{{Time[0]}} {{Time[1]}}</view>
+    <view class="td bg-g text" id="{{indexRow}}-{{indexCol}}-{{days.name}}-{{days.classroom}}-{{days.start}}-{{days.end}}" wx:for="{{classesTable[indexRow]}}" wx:for-index='indexCol' wx:for-item="days" bindtap="modifyTable"> {{days.name}} {{days.classroom}}
+    </view>
+  </view>
+</view>
+
+<!-- 课表更改表单 -->
+<view>
+  <form class="addDetail" style="display: {{addDetailDisplay}};" bindsubmit="addSubmit">
+    <view>
+      <text class="eventText">name: </text>
+      <input type="text" class="eventInput" name="name" value="{{addClassName}}" />
+    </view>
+    <view>
+      <text class="eventText">classroom: </text>
+      <input type="text" class="eventInput" name="classroom" value="{{addClassRoom}}" />
+    </view>
+    <view>
+      <text class="eventText">startTime: </text>
+      <input type="number" class="eventInput" name="startTime" value="{{addClassStartTime}}" />
+    </view>
+    <view>
+      <text class="eventText">节数: </text>
+      <input type="number" class="eventInput" name="endTime" value="{{addClassTimes}}" />
+    </view>
+    <view>
+      <text class="eventText">weekday: 星期{{weekdayChinese[addClassWeekDay]}}</text>
+      <input type="text" class="eventInput" name="weekday" value="{{addClassWeekDay}}" style="opacity: 0;" />
+    </view>
+    <button form-type="submit">确定</button>
+    <button bindtap="addDeny">取消</button>
+  </form>
+</view>
+
+<!-- 时间段更改表单 -->
+<view>
+  <form class="addDetail" style="display: {{modifiTimeDisplay}};" bindsubmit="modifiTimeSubmit">
+    <view>
+      <text class="eventText">节数序号: </text>
+      <input type="text" class="eventInput" name="newIndex" value="{{newIndex}}" />
+    </view>
+    <view>
+      <text class="eventText">开始时间: </text>
+      <input type="text" class="eventInput" name="timeEipStartTime" value="{{timeEipStartTime}}" />
+    </view>
+    <view>
+      <text class="eventText">结束时间: </text>
+      <input type="text" class="eventInput" name="timeEipEndTime" value="{{timeEipEndTime}}" />
+    </view>
+    <button form-type="submit">确定</button>
+    <button bindtap="addDeny">取消</button>
+  </form>
+</view>

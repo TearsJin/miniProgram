@@ -1,0 +1,66 @@
+.moduleSelect-Content{
+  width: 100%;
+  display: block;
+  padding-top: 5px ;
+  padding-bottom: 5px; 
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.moduleSelect-Body{
+  width: 80%;
+  display: block;
+  margin-left: 10%;
+  border-radius: 20px;
+  display: flex;
+  background-color: rgba(0, 174, 255, 0.384);
+}
+
+.moduleSelect-List{
+  display: block;
+  width: 33.3%;
+}
+
+.moduleSelect-Icon{
+  width: 30%;
+  display: block;
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  
+}
+.moduleSelect-First{
+  margin-left:35% ;
+  padding-right: 35%;
+  border-right: 1px solid white;
+}
+.moduleSelect-Middle{
+  padding-left: 35%;
+  padding-right: 35%;
+  border-left: 1px solid white;
+}
+
+.moduleSelect-Last{
+  padding-left: 35%;
+  margin-right: 35%;
+  border-left: 1px solid white;
+}
+
+/* 被选中样式 */
+.moduleSelect-Selected-First{
+  background-color: rgb(0, 174, 255);
+  border-radius: 20px 0 0 20px;
+}
+.moduleSelect-Selected-Mid{
+  background-color: rgb(0, 174, 255);
+  border-radius: 0 0 0 0;
+}
+.moduleSelect-Selected-Last{
+  background-color: rgb(0, 174, 255);
+  border-radius: 0px 20px 20px 0px;
+}
+.moduleSelect-IconPng{
+  margin-top: 3px;
+  width: 17px;
+  height:17px;
+}
