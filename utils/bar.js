@@ -39,13 +39,35 @@ export const displayRightBar = (page) => {
   if (page.data.menuBtnStyle == menuBtnStyle1) {
     page.setData({
       menuBtnStyle: menuBtnStyle2,
-      rightBarStyle: rightBarStyle2
+      rightBarStyle: rightBarStyle2,
+      // rightBarBodyDisplay: 'display:none;',
     })
+    // 设置动画
+    page.animate('.rightBarContent', [
+      { left: -100},
+      { left: 0 },
+      ],200,function () {
+      }.bind(page))
+    page.animate('.rightBar',[
+      {width:100,backgroundColor: '#00000000'} ,
+      {width:110,backgroundColor: '#00000090'} ,
+    ], 200)
   } else {
-    page.setData({
-      menuBtnStyle: menuBtnStyle1,
-      rightBarStyle: rightBarStyle1
-    })
+    page.animate('.rightBarContent', [
+      { left: 0},
+      { left: -100 },
+      ],200,function () {
+        page.setData({
+          menuBtnStyle: menuBtnStyle1,
+          rightBarStyle: rightBarStyle1
+        })
+        page.clearAnimation('.rightBarContent')
+        page.clearAnimation('.rightBar')
+      }.bind(page))
+      page.animate('.rightBar',[
+        {width:100,backgroundColor: '#00000090'} ,
+        {width:110,backgroundColor: '#00000000'} ,
+      ], 200)
   }
 }
 
@@ -56,13 +78,13 @@ export const toApplication = (target) => {
   })
 }
 
-const menuBtnStyleBase = `background-color: none;height: 80%;padding: 0;font-size: 10px;width: 32px;margin-top: 1%;margin-right: 5px;margin-left: 5px;background-position: center;background-repeat: no-repeat;`
+const menuBtnStyleBase = `background-color: white;height: 80%;padding: 0;font-size: 10px;width: 32px;margin-top: 1%;margin-right: 5px;margin-left: 5px;background-position: center;background-repeat: no-repeat;`
 const menuBtnStyle1 = menuBtnStyleBase + `background: url('` + IMAGE.menuButtonBackground1 + `')`
 const menuBtnStyle2 = menuBtnStyleBase + `background: url('` + IMAGE.menuButtonBackground2 + `')`
-const rightBarStyleBase = `width: 150px;height: 100%;top: 2.5rem;border-right: 1px solid black;position: fixed;background-color: rgba(255,255,255,0.9);z-index: 3;font-weight:bolder;font-size: 1rem;`
+const rightBarStyleBase = `width: 100%;height: 100%;top: 2.3rem;border-right: 1px solid white;position: fixed;z-index: 3;font-weight:bolder;font-size: 1rem;`
 const rightBarStyle1 = rightBarStyleBase + `display: none;`
 const rightBarStyle2 = rightBarStyleBase + `display: initial;`
-const headBarStyle = `width: 100%;height: 2.5rem;position: fixed;top: 0;z-index: 3;background: white;`
-const backBtnStyle = `background-color: none;height: 80%;padding: 0;font-size: 10px;width: 32px;margin-top: 1%;margin-left: 5px;margin-right: 5px;background-position: center;background-repeat: no-repeat;
+const headBarStyle = `width: 100%;height: 2.3rem;position: fixed;top: 0;z-index: 3;background-color: #38436f;`
+const backBtnStyle = `background-color: white;height: 80%;padding: 0;font-size: 10px;width: 32px;margin-top: 1%;margin-left: 5px;margin-right: 5px;background-position: center;background-repeat: no-repeat;
 ` + `background: url('` + IMAGE.backBtnground + `');`
-const barMargin = `margin-bottom:5px`
+const barMargin = `margin-top:1rem;margin-left:1rem;font-size:1.2rem;color:white;display:flex;align-items:center;`

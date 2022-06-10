@@ -1,7 +1,7 @@
 <view class="clanderBar">
     <view class="clanderYm">{{clanderYm}}</view>
-    <button class="clanderButton" bindtap="clanderNext">{{">"}}</button>
-    <button class="clanderButton" bindtap="clanderLast" style="margin-right: 10px;">{{"<"}}</button>
+    <button class="clanderButton clanderNextPage" bindtap="clanderNext"></button>
+    <button class="clanderButton clanderLastPage" bindtap="clanderLast" style="margin-right: 10px;"></button>
   </view>
   <view class="tr bg-w">
     <view class="th">日</view>

@@ -126,14 +126,17 @@ function whileUpload(DATA, e, i) {
     cloudUtils.countDownUtils.editCountDownEvents(data).then(res => {
       console.log(res)
       oriPage.setData({
-        finishedUpload: ((i+1) / DATA.length  * 100).toFixed(2)
+        finishedUpload: Math.round(((i+1) / DATA.length  * 100))
       })
       whileUpload(DATA, e, i + 1)
     })
   }else{
-    oriPage.setData({
-      uploadCountDownStyle: 'none'
-    })
-    displayCountDownEvents()
+    // 上传完成
+    setTimeout(()=>{
+      oriPage.setData({
+        uploadCountDownStyle: 'none'
+      })
+      displayCountDownEvents()
+    },2000)
   }
 }

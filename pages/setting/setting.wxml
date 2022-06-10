@@ -1,21 +1,24 @@
 <!--pages/setting/setting.wxml-->
 <!-- 头部导航栏 -->
-<include src="../Utils/head.wxml"/>
+<include src="../Utils/head.wxml" />
 <!-- 侧栏 -->
-<include src="../Utils/rightBar.wxml"/>
+<include src="../Utils/rightBar.wxml" />
 
-<view style="margin-top: 42px;">
+<view style="margin-top: 42px;display: flex;flex-direction: column;">
+  <view style="text-align: center;font-weight: bold;margin-top: 1rem;margin-bottom: 0.5rem;font-size: 2rem;">设置</view>
+  <view style="width: 80%; height: 0.1px;border: 0.1px solid gray;margin-left: 10%;margin-bottom: 1rem;"></view>
+  <view class="settingList">
+    <button bindtap="selectSetting" id="0" class="{{'settingListBtn ' + settingListChosen[0]}}">课表设置</button>
+    <button bindtap="selectSetting" id="1" class="{{'settingListBtn ' + settingListChosen[1]}}">水电费设置</button>
+  </view>
   <!-- 设置课表列数 -->
-  <form bindsubmit="changeStudyRow">
-    <text>课表节数</text>
-    <input type="text" name="studyRow" style="border: 1px solid black;" />
-    <text>上课天数</text>
-    <input type="text" name="studyCol" style="border: 1px solid black;" />
-    <button form-type="submit">确定</button>
+  <form class="settingForm" bindsubmit="changeStudyRow" style="{{'display:' + settingDisplayList[0] + ';'}}">
+    <input class="settingInput" type="number" placeholder="每天的最大课程数量" name="studyRow"  />
+    <input class="settingInput" type="number" placeholder="每星期的上课日数量" name="studyCol"  />
+    <button class="settingBtn" form-type="submit">确定</button>
   </form>
-  <form bindsubmit="changeRoom">
-    <text>水电费 - 房间号（格式：t30519）</text>
-    <input type="text" name="room" style="border: 1px solid black;"/>
-    <button form-type="submit">确定</button>
+  <form class="settingForm" bindsubmit="changeRoom" style="{{'display:' + settingDisplayList[1] + ';'}}">
+    <input class="settingInput" placeholder="水电费 - 房间号（格式：t30519）" type="text" name="room" />
+    <button class="settingBtn" form-type="submit">确定</button>
   </form>
 </view>

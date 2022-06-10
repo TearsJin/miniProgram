@@ -18,16 +18,39 @@ export const waterInit = (page) => {
     waterTd: "",
     waterTitleText: '水电费查询中...'
   })
+
   oriPage.waterFresh = (e) =>{
-    getWater = new Promise((resolve,reject) => {
-      wx.cloud.callFunction({
-        name: 'getWater',
-        data: {},
-      }).then(res =>{
-          resolve(res)
+    oriPage.animate('.water-Fresh-btn', [
+      { rotateZ: 90 + 45},
+      { rotateZ: 180 + 45},
+      { rotateZ: 270 + 45},
+      { rotateZ: 360 + 45},
+      ], 500,function () {
+        oriPage.clearAnimation('.water-Fresh-btn',()=>{
+        })
+      }.bind(oriPage))
+    let timer = setInterval(()=>{
+      oriPage.animate('.water-Fresh-btn', [
+        { rotateZ: 90 + 45},
+        { rotateZ: 180 + 45},
+        { rotateZ: 270 + 45},
+        { rotateZ: 360 + 45},
+        ], 500,function () {
+          oriPage.clearAnimation('.water-Fresh-btn',()=>{
+          })
+        }.bind(oriPage))
+    },1000)
+      getWater = new Promise((resolve,reject) => {
+        wx.cloud.callFunction({
+          name: 'getWater',
+          data: {},
+        }).then(res =>{
+            clearInterval(timer)
+            resolve(res)
+
+        })
       })
-    })
-    waterInit(oriPage)
+      waterInit(oriPage)
   }
   getWater.then(res => {
     try {
@@ -46,7 +69,7 @@ export const waterInit = (page) => {
       let waterColdPrice = info.bill.coldWater.price
       let waterCold = (info.bill.coldWater.usage - info.allowance.coldWater.total > 0) ? (info.bill.coldWater.usage - info.allowance.coldWater.total) * info.bill.coldWater.price : 0
       oriPage.setData({
-        waterTitleText: `${res.result[1]}`,
+        waterTitleText: `${res.result[1].toUpperCase()}`,
         waterBalance: waterBalance,
 
         waterElectricityUsage:waterElectricityUsage.toFixed(2),

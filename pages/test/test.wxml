@@ -8,43 +8,47 @@
 <!-- 日历组件 -->
 <view class="clanderTable">
   <view class="clanderDetail" style="display:{{detailDisplay}}">
-    <button class="closeDetail" bindtap="closeDetail">X</button>
-    <button class="closeDetail" bindtap="addEvent" id="{{detailDay}}">+</button>
+
     <!-- 事件添加表单 -->
     <form class="addDetail" style="display: {{addDetailDisplay}};" bindsubmit="addSubmit">
       <input type="text" style="display: none;" name="date" value="{{addEventDate}}" />
+      <view style="text-align: center;margin-top: 1.8rem;font-size: 2rem;font-weight: bolder;margin-bottom: 1.5rem;">添加事项</view>
+    <view style="border:1px solid white;width: 90%;margin-left:5%;background-color: #455181;padding-top: 1rem;border-radius: 1rem;display: flex;flex-direction: column;">
       <view>
-        <text class="eventText">name: </text>
-        <input type="text" class="eventInput" name="name" value="{{addEventName}}" />
+        <input type="text" placeholder="事项名称" class="eventInput" name="name" value="{{addEventName}}" />
       </view>
       <view>
-        <text class="eventText">startTime: </text>
-        <input type="number" class="eventInput" name="startTimeH" value="{{addEventStartTimeH}}" style="width: 20px;float: left;" /> <text style="float:left">:</text>
-        <input type="number" class="eventInput" name="startTimeM" value="{{addEventStartTimeM}}" style="width: 20px;float: left" />
+        <input type="number" placeholder='时' class="eventInput" name="startTimeH" value="{{addEventStartTimeH}}" style="width: 37%;float: left;" />
+        <input type="number" placeholder='分' class="eventInput" name="startTimeM" value="{{addEventStartTimeM}}" style="width: 37%;float: left;margin-left: 2%;" />
       </view>
       <view>
-        <text class="eventText" style="padding-left: 100%;"></text>
-        <radio-group bindchange="radioChange">
-          未完成：<radio checked="true" value="unfinished"></radio>
+        <radio-group bindchange="radioChange" style="margin-left: 8%;">
+          未完成：<radio checked="true" value="unfinished" style="margin-right: 20%;"></radio>
           已完成：<radio value="finished"></radio>
         </radio-group>
       </view>
-      <checkbox-group bindchange="changeSub">
+       <checkbox-group bindchange="changeSub" style="margin-left: 8%;margin-top: 1rem;margin-bottom: 1rem;">
         是否需要订阅提醒(当日提醒)？
         <checkbox value="True"></checkbox>
-        <view style="display:{{subFormDisplay?'initial':'none'}};">
-        订阅时间
-          <input type="number" class="eventInput" name="subTimeH" value="{{addEventSubTimeH}}" />
-        :
-        <input type="number" class="eventInput" name="subTimeM" value="{{addEventSubTimeM}}"  />
-        </view>
-
       </checkbox-group>
-      <button form-type="submit">确定</button>
-      <button bindtap="addDeny">取消</button>
+      <view>
+        <view style="display:{{subFormDisplay?'initial':'none'}};">
+        
+          <input type="number" placeholder="订阅时间 时" class="eventInput" name="subTimeH" value="{{addEventSubTimeH}}" />
+        <input type="number" placeholder="订阅时间 分" class="eventInput" name="subTimeM" value="{{addEventSubTimeM}}"  />
+        </view>
+      </view>
+      <view style="display: flex;margin-bottom: 1rem;">
+        <button form-type="submit">确定</button>
+        <button bindtap="addDeny">取消</button>
+      </view>
+    </view>
     </form>
     <!-- 当日事件 -->
+
     <include src="../Utils/events" />
+    <button class="closeDetail" bindtap="closeDetail">关闭</button>
+    <button class="closeDetail closeDetailAdd" bindtap="addEvent" id="{{detailDay}}">添加</button>
   </view>
 
   <!-- 日历 -->

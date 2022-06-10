@@ -1,10 +1,10 @@
 <view style="{{CountdownDisplay}}">
-  <button bindtap="displayCountDownAddForm">添加</button>
+<button class="countDown-add-btn" bindtap="displayCountDownAddForm"></button> 
 <view style="height:auto;display: flex;justify-content: center; ">
-  <view style="width: 80%;">
+  <view style="width: 80%;margin-left: 10%;">
     <view wx:for="{{countDownList}}" style="width:48%;float: left;padding:0.5%;border-radius: 25px;">
       <view bindlongtap="deleteCountDown" bindtap="editCountDown" style="width:100%;padding-bottom:100%;height:0;background: url('{{item.Pic}}') no-repeat center ;background-size: cover;border-radius: 10px;" id="{{item.name}}#{{item.date}}#{{item.Pic}}#{{index}}">
-        <view wx:if="{{item.name != '' && item.date != ''}}" style="width: 100%;height: auto;display: flex;flex-direction: column;align-items: center;background: rgba(255,255,255,0.4);">
+        <view wx:if="{{item.name != '' && item.date != ''}}" style="width: 100%;display: flex;flex-direction: column;align-items: center;border-radius: 10px;height: auto;">
           <text style="padding-top: 20%;">距离</text>
           <text style="color: red;font-weight: bold;">{{item.name}}</text>
           <text>还有</text>
@@ -17,23 +17,27 @@
 
 <view>
   <form class="addDetail" style="display: {{uploadCountDownStyle}};" bindsubmit="uploadCountDownSubmit">
+    <view style="text-align: center;font-weight: bold;font-size: 2rem;margin-top: 1rem;margin-bottom: 1rem;">倒计时方格</view>
     <view>
-      <text class="eventText">name: </text>
-      <input type="text" class="eventInput" name="name" value="{{countDownName}}" />
+      <input type="text" placeholder="名称" class="eventInput" name="name" value="{{countDownName}}" />
     </view>
     <view>
-      <text class="eventText">date:（xxxx-xx-xx） </text>
-      <input type="text" class="eventInput" name="date" value="{{countDownDate}}" />
+      <input type="text" placeholder="日期 xxxx-xx-xx" class="eventInput" name="date" value="{{countDownDate}}" />
     </view>
-    <view>
-      <text class="eventText">background: </text>
+    <view class="eventInput" style="height: initial;background-color: rgba(255,255,255,0);display: flex;">
+      <view style="width: 10rem;height: 10rem;background: url('{{countDownPic}}') no-repeat center;background-size: 100%;border-radius: 10px;">
+      </view>
       <input value="{{countDownPic}}" style="display: none;"/>
-      <button bindtap="uploadCountDownPic">点击上传</button>
-      <view style="width: 40px;height: 40px;background: url('{{countDownPic}}') no-repeat center;background-size: 100%"></view>
-      <view>{{finishedUpload}} % </view>
+      <view style="display: flex;flex-direction: column;align-items: center;">      
+      <button bindtap="uploadCountDownPic" style="margin-top: 2rem;">上传图片</button>
+      <!-- <view>{{finishedUpload}} % </view> -->
+      <progress percent="{{finishedUpload}}" active-mode="forwards" active show-info stroke-width="15" style="margin-top: 2rem;width:11rem;margin-left: 2rem;" />
+      </view>
     </view>
-    <button form-type="submit">确定</button>
-    <button bindtap="editCountDownDeny">取消</button>
+    <view style="display: flex;margin-bottom: 1rem;width: 100%;margin-left: 0;">
+      <button form-type="submit">确定</button>
+      <button bindtap="editCountDownDeny">取消</button>
+    </view>
   </form>
 </view>
 </view>

@@ -1,1 +1,38 @@
 /* pages/Help/Help.wxss */
+@import "../Wxss/Util.wxss";
+
+.helpList{
+  width: 80%;
+  margin-left: 9%;
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+  border-top: 1px solid black;
+  padding-top: 0.5rem;
+  padding-bottom: 1rem;
+  padding-right: 1%;
+  padding-left: 1%;
+}
+
+.helpListHead{
+  display: flex;
+  font-size: 1.2rem;
+  padding-right: 10%;
+  font-weight: bolder;
+}
+
+.helpBody{
+  display: none;
+}
+
+.helpListDisplayBtnFalse{
+
+  width: 32px;
+  height: 32px;
+  background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAA/ElEQVRYR+2UsQ2DMBBFscQAGSGpceGM4A2SDbJRRmCUZIO4MBIlI6QHRO4kLFmI2GencIpDcoWP//x8nKgKP6JwfsUAbIANsIH/NiClfOCktNbq1ImplDpM09Quy6K6rjt9qw8aAIAXFCpYBiDOVAgXDvsvsdogwPohtIAQT4qJbXhd19oY884ygEUpELh3HMe7EOKGJ4cruPZ9P4TMkZqQApETjmAkgJgJPxyabpjnWcdO7qyQAUIQTdO0qD01PMmAI95eB4bmhmcB7Jiock6edQV+N3smjgCgYdgY6pzw9yX1wF4AgoT+8xjUzwCxgNh7BmADbIANFDfwAX1ZsSEbr5FaAAAAAElFTkSuQmCC');
+}
+.helpListDisplayBtnTrue{
+
+  width: 32px;
+  height: 32px;
+  background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAA4klEQVRYR+2WXQ3CQBCEWwdYwAE4AAfFAY6QgAQkIAEkIKES2Em2yYWn3Z1JLiS3yaYvTee72Z/rPHWOubP+NACGA3/nwNOn5qyanqwDLxM+WL4tjwqILMDOROGCDCILsB0aECd3AuVYq25UAaAngWAAJBAsAA2hAGghPj4d4Z5QAfxC7KNNqQS4m+jVJwIAIRcUANgNNxdHCTCWeIaCBaDEQcgA0OIMQCuOe+GSsb2tTcUBiKPhFktKvOKAVLwC8FCdfCtDtgT4H0BQN6CiB0JLJrIIsg5Evpl6ZwAMB7o78AUKVTEhQh8ovgAAAABJRU5ErkJggg==');
+}

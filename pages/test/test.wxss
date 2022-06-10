@@ -1,15 +1,30 @@
 /* pages/test/test.wxss */
 
 
+
+/* 今日待办组件 */
+@import "../Wxss/animation.wxss";
+
+
+@import "../Wxss/toDoEvent.wxss";
+
+@import "../Wxss/moduleSelect.wxss";
+
+/* 水电费组件 */
+@import "../Wxss/water.wxss";
+
+@import "../Wxss/Util.wxss";
+
+@import "../Wxss/event.wxss";
 .clanderTable{
-  margin-top: 2.6rem;
+  margin-top: 2.3rem;
   border-bottom: 1px solid rgb(56, 102, 163);
   display: block;
   height: 20.1rem;
 }
 
 .tr{
-  background-color: rgba(100, 148, 237, 0.342);
+  background-color: rgba(77,153,207, 0.342);
   display: flex;
   width: 100%;
   justify-content: center;
@@ -20,11 +35,12 @@
 .th{
   width: 40%;
   justify-content: center;
-  background: #3366FF;
+  background: rgb(77,153,207) ;
   color: #fff;
   display: flex;
   height: 100%;
   align-items: center;
+  /* font-weight: 550; */
 }
 .td{
   width: 40%;
@@ -33,7 +49,9 @@
   text-align: center;
   align-items: center;
   display: flex;
+  /* font-weight: 450; */
 }
+
 
 .nonThisMonth{
   color: rgba(128, 128, 128, 0.425);
@@ -41,14 +59,19 @@
 
 .today{
   height: 80%;
-  width: 80%;
+  width: 72%;
+  margin-left:10%;
+  margin-right: 10%;
   justify-content: center;
   text-align: center;
   align-items: center;
   display: flex;
-  background-color: rgb(88, 140, 236);
-  border: 1px solid white;
-  font-weight: 500;
+  /* background-color: rgb(88, 140, 236); */
+  border-bottom: 3px solid rgb(255, 171, 169);
+  /* font-weight: 500; */
+  font-weight: 900;
+  font-size: 1.15rem;
+  color: rgb(254,71,76);
 }
 
 .ctfinformation{
@@ -59,18 +82,21 @@
 .clanderYm{
   display: block;
   float: left;
-  height: 100%;
+  height: 90%;
   text-align: center;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   margin: 0;
+  margin-left: 0.5rem;
   padding: 0;
+  padding-top: 0.15rem;
+  color: rgb(255, 255, 255);
 }
 .clanderBar{
   width: 100%;
   height: 2rem;
-  background-color: rgba(128, 128, 128, 0.349);
+  background-color: rgb(51,147,183);
 }
-
+/* */
 .clanderButton{
   float:right;
   font-weight:bolder;
@@ -86,62 +112,79 @@
 
 .clanderDetail{
   position: absolute;
-  min-height: 20.1rem;
+  min-height: 100%;
+  padding-bottom: 1rem;
   width: 100%;
-  background-color: white;
-  border: 1px solid black;
+  background-color: rgba(56,67,109, 0.9);
+  border-bottom: 1px solid white;
   z-index: 2;
 }
+.clanderLastPage{
+  background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAsklEQVQ4T2NkoBAwEqP/////AUB19UB8gJGRsRBZD0EDgJoTgBr6gVgAqlEQaMgHmCF4DYDaPB9J8wKg5kSiXADU7ABUuB5J8wYgOxHZdpBBWF2ARfMBoNpAdM1YDSBFM4YBQM2ggLqP5GycNmMNRKgB75ECCRRtjviiGiMMoF7YT6wh+AKRKENwpgNiXUIoIYHSAl6XEJOU0Q0hPinDAhLqHVB+eACMlUCikjK+qEOWAwDKsEoRXv1cCwAAAABJRU5ErkJggg==');
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
+.clanderNextPage{
+  background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAArklEQVQ4T2NkoBAwouv///9/P1DMAIgnMjIybiBkPooBQM0CQA3vkTQlAg1ZgM8QbC6YD9SQgKTJEWjIAVyGYBgAUgh0yX4g5UCMIVgNIMUQnAYQawheA3AYIggMkw8w7xFyAShWQNEKC1SQRkOgAQ8IGgCNUnTNhejRiisWsNmMoRnkCmzpgGjNuAwAObsA6keQn7HajDUM0JIyQc24XABKygGEbCYYC/gyELIcAE4hTBHku9z+AAAAAElFTkSuQmCC');
+  background-position: center;
+  background-repeat: no-repeat;
+}
 .closeDetail{
-  height: 1.5rem;
-  width: 1.5rem;
+  height: 2.5rem;
+  width: 4rem;
   float: right;
   text-align: center;
-  font-size: 10px;
+  font-size: 1rem;
+  color: white;
+  background-color: #8aa4fa;
   padding: 0;
+  margin-right:1.5rem;
+  margin-top: 1rem;
+  border: 0.01rem solid white;
+}
+
+.closeDetailAdd{
+  float: left;
+  margin-left: 1.5rem;
 }
 
 .addDetail{
   width: 100%;
+  height: 100%;
+  color: white;
   display: none;
-  background-color: white;
-  border: 1px solid black;
+  background-color: #38436d;
+  /* border: 1px solid white; */
+  /* border-radius: 1rem; */
   z-index: 9;
   position: fixed;
-  top: 120px;
-  padding-top: 20px;
+  top: 2.3rem;
+  /* padding-top: 20px; */
 }
 
 .eventInput{
-  border: 1px solid black;
-  height: 100%;
-  width: 50%;
+  /* border: 1px solid black; */
+  background-color: rgba(128, 128, 128, 0.1);
+  height: 2.5rem;
+  width: 80%;
+  margin-left: 8%;
+  margin-bottom: 1.5rem;
+  color: white;
+  padding-left: 1rem;
 }
 
 .eventText{
   float: left;
 }
 
-.detailEvents{
-  border-bottom: 1px solid black;
+.countDown-add-btn{
   float: right;
-  width: 100%;
-}
-
-.finish-true{
-  background-color: green;
-}
-
-.finish-false{
-  background-color: red;
+  right: 1.2rem;
+  width: 32px;
+  height: 32px;
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAtUlEQVRYR+2U0Q2AIAxE7QZuoG7gKDqCm7iBo+kGOgIb4GkwMUYEIQY/jl967eNCT7LERxLPzwhAB6Ic0Fr3+MSFiHShnzkWQG+DARDcJ1i4DYYDBKADdOA7B7BhAzatcQRMae4XR92EqGjvaqw5AIARgjo04S66BQDVKwATNMcLbRyzubhtfhIpAKjXAK7XMwnpAB34gwN7DthCxrXGu9an6KkGLuS2kPHpHQ3gM+SphgB0YAXDM1khmIHcXQAAAABJRU5ErkJggg==');
+  background-color: rgba(18,150,219,0);
 }
 
 
-/* 今日待办组件 */
-@import "../Wxss/toDoEvent.wxss";
-
-@import "../Wxss/moduleSelect.wxss";
-
-/* 水电费组件 */
-@import "../Wxss/water.wxss";

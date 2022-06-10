@@ -6,13 +6,6 @@
 <include src="../Utils/rightBar.wxml"/>
 
 
-<view>
-1111
-</view>
-<view>
-1111
-</view>
-
 
 <!-- 事项列表 -->
 <include src="../Utils/events.wxml"/>

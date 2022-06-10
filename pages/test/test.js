@@ -43,10 +43,10 @@ Page({
       'addEventDate': e.target.id,
       'addDetailDisplay': 'block',
       'finishRadio': false,
-      'addEventStartTimeH': 0,
-      'addEventStartTimeM': 0,
-      'addEventSubTimeH': 0,
-      'addEventSubTimeM': 0
+      // 'addEventStartTimeH': 0,
+      // 'addEventStartTimeM': 0,
+      // 'addEventSubTimeH': 0,
+      // 'addEventSubTimeM': 0
     })
   },
 
@@ -133,6 +133,28 @@ Page({
 
           })
         }
+      })
+    }else{
+      cloudUtils.eventsOperate.add(e.detail.value).then(res => {
+        this.setData({
+          'addEventName': "",
+          'addEventStartTimeM': 0,
+          'addEventStartTimeH': 0,
+          'addEventSubTimeH': 0,
+          'addEventSubTimeM': 0
+        })
+        wx.showToast({
+          title: 'ok!',
+          icon: 'success',
+          duration: 1500
+        })
+        eventsUtils.getTodayEvents(e.detail.value.date).then(res => {
+          this.setData({
+            allEvents: res,
+            'addDetailDisplay': 'none'
+          })
+          this.getToDo()
+        })
       })
     }
 

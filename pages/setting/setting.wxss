@@ -1,1 +1,48 @@
 /* pages/setting/setting.wxss */
+
+@import "../Wxss/Util.wxss";
+
+.settingList{
+  display: flex;
+  flex-direction: column;
+  /* border: 1px solid black; */
+  border-radius: 1rem;
+  width: 60%;
+  margin-left: 18%;  
+  padding:2%;
+  background-color: rgb(170, 203, 230) ;
+}
+
+.settingListBtn{
+  color: rgb(54, 5, 66);
+  border-radius: 1rem;
+  background-color:rgb(170, 203, 230) ;
+  width: 90%;
+  text-align: left;
+  margin-left: 5%;
+}
+
+.settingListChosen{
+  background-color: white;
+}
+
+.settingForm{
+  display: flex;
+  margin-top: 2rem;
+  width: 80%;
+  margin-left: 10%;
+
+}
+
+.settingInput{
+  height: 2.5rem;
+  margin-bottom: 1rem;
+  border-radius: 0.2rem;
+  padding-left: 1rem;
+  background-color: rgb(193, 213, 233);
+}
+
+.settingBtn{
+  width: 30%;
+  margin-left: 70%;
+}

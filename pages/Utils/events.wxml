@@ -1,8 +1,16 @@
-<view wx:for="{{allEvents}}">
-  <view wx:if="{{item.statu}}">
-    <view bindlongpress="deleteEvent" bindtap="changeStatu" id="{{item.name + '-' + item._id + '-' + item.statu + '-' + item.date + '-' + item.isSub + '-' + item.subId}}" class="{{'detailEvents finish-' + item.statu}}" style="{{finishedTrueStyle}}">{{item.name}} 开始：{{item.startTimeH}}:{{item.startTimeM}}{{item.isSub?('| 已订阅：' +item.subTimeH +':' +item.subTimeM):' | 无提醒'}}  </view>
-  </view>
-  <view wx:if="{{!item.statu}}">
-    <view bindlongpress="deleteEvent" bindtap="changeStatu" id="{{item.name + '-' + item._id + '-' + item.statu + '-' + item.date + '-' + item.isSub + '-' + item.subId}}" class="{{'detailEvents finish-' + item.statu}}" style="{{finishedFalseStyle}}">{{item.name}} 开始：{{item.startTimeH}}:{{item.startTimeM}} {{item.isSub?('| 已订阅：' +item.subTimeH +':'+item.subTimeM):' | 无提醒'}}</view>
+<view class="eventsContent">
+  <button class="eventHead" style="border-radius:0;height:4rem;background-color:rgba(56,67,109, 0.9);text-align: center;color: white;font-weight: bolder;font-size: 1.5rem;">所有事项</button>
+  <view wx:for="{{allEvents}}">
+    <view bindlongpress="deleteEvent" bindtap="changeStatu" id="{{item.name + '-' + item._id + '-' + item.statu + '-' + item.date + '-' + item.isSub + '-' + item.subId}}" class="{{'detailEvents '}}" style="{{finishedTrueStyle}}">
+      <view class="{{'finish-' + item.statu + '-image'}}"></view>
+      <view style="display: flex;">
+        <view style="font-weight: bolder;font-size: 1rem;padding-right: 0.5rem;color: white ;">{{item.name}}</view>
+        <view style="font-weight: bolder;height:20%;color: white;display: flex;align-items: center;margin-top: 0.5rem;font-size: 0.7rem;padding-left: 0.6rem;border-left: 0.2rem solid white;">开始时间：{{(dateDisplay?item.date+" ":"")+item.startTimeH}}:{{item.startTimeM}}</view>
+        <view style="font-weight: bolder;font-size: 0.7rem;color: white ; display: flex;align-items: center;margin-left: 0.4rem; margin-top: 0.2rem;">
+          <view class="{{'sub-'+item.isSub+'-image'}}" style="margin-right: 0.2rem;"></view>
+          {{item.isSub?('' +item.subTimeH +':' +item.subTimeM):''}}
+        </view>
+      </view>
+    </view>
   </view>
 </view>

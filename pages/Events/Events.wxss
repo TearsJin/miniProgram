@@ -1,1 +1,17 @@
 /* pages/Events/Events.wxss */
+
+@import "../Wxss/Util.wxss";
+@import "../Wxss/event.wxss";
+
+
+.eventsContent{
+  margin-top: 3rem;
+}
+
+.eventHead{
+  margin-bottom: 1rem;
+}
+
+page{
+  background-color: rgba(48, 62, 121, 0.9);
+}

@@ -92,8 +92,8 @@ Page({
     if(id[0] == "T"){
       // 更新时间段
       this.setData({
-        oldIndex: id[1],
-        newIndex: id[1],
+        oldIndex: parseInt(id[1]),
+        newIndex: parseInt(id[1]),
         timeEipStartTime : id[2],
         timeEipEndTime: id[3]
       })
@@ -144,13 +144,15 @@ Page({
             name: CLASS.name,
             classroom: CLASS.classroom,
             start: rowLeft,
-            end: rowRight
+            end: rowRight,
+            nums: rowRight - rowLeft + 1
           }
           for (var j = rowLeft; j < rowRight + 1; j++) {
             classesTable[j][col] = info
           }
         }
         // 设置课表表格
+
         this.setData({
           timeEip: result.timeEip,
           classesTable: classesTable,

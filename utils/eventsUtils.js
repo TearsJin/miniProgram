@@ -7,10 +7,10 @@ const cloudUtils = require('cloudUtils.js')
 let oriPage = ''
 export const eventsInit = async (page) => {
   oriPage = page
-  oriPage.setData({
-    finishedTrueStyle: finishedTrueStyle,
-    finishedFalseStyle: finishedFalseStyle
-  })
+  // oriPage.setData({
+  //   finishedTrueStyle: finishedTrueStyle,
+  //   finishedFalseStyle: finishedFalseStyle
+  // })
 
   // 状态改变函数
   oriPage.changeStatu = (e) => {
@@ -129,12 +129,12 @@ function comp(d1, d2) {
   return false;
 }
 
-const finishedTrueStyle = `
-  background-color: green;
-`;
-const finishedFalseStyle = `
-background-color: red;
-`;
+// const finishedTrueStyle = `
+//   background-color: green;
+// `;
+// const finishedFalseStyle = `
+// background-color: red;
+// `;
 
 export const getEvents = () => {
   return new Promise((resolve, reject) => {

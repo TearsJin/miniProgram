@@ -23,17 +23,18 @@ export const moduleSelect = {
     }
     oriPage.moduleSelectShift = (e) =>{
       let id = e.currentTarget.id
-      for(let name in selected){
-        if(selected[name] == id){
-          let cssName = selected[name] + 'Display'
-          let str = `{"${cssName}":"display:initial;"}`
-          oriPage.setData(JSON.parse(str))
-        }
-      }
+      
       for(let name in selected){
         if(selected[name] != id){
           let cssName = selected[name] + 'Display'
           let str = `{"${cssName}":"display:none;"}`
+          oriPage.setData(JSON.parse(str))
+        }
+      }
+      for(let name in selected){
+        if(selected[name] == id){
+          let cssName = selected[name] + 'Display'
+          let str = `{"${cssName}":"display:initial;"}`
           oriPage.setData(JSON.parse(str))
         }
       }
